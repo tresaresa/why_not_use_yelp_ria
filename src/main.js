@@ -7,6 +7,8 @@ import VueRouter from 'vue-router'
 import ResturantList from "@/components/ResturantList";
 import CommentList from "@/components/CommentList";
 import User from "@/components/User";
+import FollowerList from "@/components/FollowerList";
+import FolloweeList from "@/components/FolloweeList";
 
 Vue.config.productionTip = false
 Vue.prototype.$http= axios
@@ -17,8 +19,11 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/', component: ResturantList},
   { path: '/comments/:id', component: CommentList, props: true},
-  { path: '/user:id', component: User, props: true}
-
+  { path: '/userinfo/:id', component: User, props: true,
+    children: [
+      { path: 'follower/:id', component: FollowerList, props: true},
+      { path: 'followee/:id', component: FolloweeList, props: true}
+    ]},
 ]
 
 const router = new VueRouter({
