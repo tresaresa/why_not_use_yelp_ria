@@ -1,9 +1,8 @@
 <template>
   <div>
-    Resturants
     <el-table
       :data="resturants"
-      style="width: 100%"
+      class="resturants"
       @row-click="rowClick">
       <el-table-column
         prop="name"
@@ -43,5 +42,8 @@
 </script>
 
 <style scoped>
-
+.resturants {
+  width: 100%;
+  margin: 1%;
+}
 </style>

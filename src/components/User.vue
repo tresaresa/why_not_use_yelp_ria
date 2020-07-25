@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  //import boy from '@assets/boy.jpg'
+
   export default {
     name: "User",
     props: {
@@ -36,11 +36,10 @@
       }
     },
     mounted() {
-      //this.id = "BiZvuNKi0bs_YwttHhhq4w"
       this.$http.get(`/app/userinfo/${this.id}`).then(response => {
         var data = response.data
         this.user = data
-        console.log(data);
+        console.log(data)
       })
     },
     methods: {
@@ -49,9 +48,6 @@
   }
 </script>
 
-<style>
-
-</style>
 <style scoped>
   .box-card {
     margin: 1%;

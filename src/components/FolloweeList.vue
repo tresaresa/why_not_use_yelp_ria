@@ -10,6 +10,8 @@
         {{item.nickname}}
         <br>
         {{item.gender}}
+        <br>
+        <el-button circle @click="cancelFollowee(item.id)"/>
       </el-card>
     </div>
   </div>
@@ -27,11 +29,22 @@
       }
     },
     mounted() {
-      this.$http.get(`/app/followee/${this.id}`).then(response => {
-        var data = response.data
-        this.users = data
-        console.log(data);
-      })
+      this.refresh();
+    },
+    methods: {
+      cancelFollowee(followeeId) {
+        this.$http.get(`/app/followee-deletion/${followeeId}/${this.id}`).then(response => {
+          var data = response.data
+          console.log(data)
+        })
+      },
+      refresh() {
+        this.$http.get(`/app/followee/${this.id}`).then(response => {
+          var data = response.data
+          this.users = data
+          console.log(data)
+        })
+      }
     }
   }
 </script>
